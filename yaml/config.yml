@@ -1,0 +1,28 @@
+general_settings:
+  tags: ## DELETE IF NOT USED. List of tags you want to appear in notifications for identification purposes
+    - myTag
+    - Production
+  inclusions: ## DELETE IF NOT USED. Name of the containers you ONLY want to include to deathwatch. Use only if you want a small number of containers to be included. Warning: Should not be used in conjunction with exclusions. Delete both inclusions and exclusions if you want all containers to be included
+    - example_container_name_1
+    - example_container_name_2
+  exclusions: ## DELETE IF NOT USED. Name of the containers you want to exclude in deathwatch. Use only if you want a small number of containers to be excluded. Warning: Should not be used in conjunction with inclusions. In case the same container name is in both include and exclude - exclude will take precedence. Delete both inclusions and exclusions if you want all containers to be included
+    - example_container_name_3
+    - example_container_name_4
+
+container_settings:
+  exit_codes: ## exit codes for more granular control of the DIE container event
+      - 1
+      - 139
+  restart_policy: ## DELETE IF NOT WANTED. Whether to notify when the container has crashed, but the restart policy was set to "on-failure"/"always"/"unless-stopped"
+    enabled: true
+    ## "max_count_notify" - the max number of times you will receive notification if the container is caught in a restart loop
+    max_count_notify: 3
+
+integrations: ## Available integrations
+  telegram: ## DELETE IF NOT USED
+    token: <PASTE YOUR TELEGRAM BOT TOKEN HERE>
+    chat_id: <PASTE YOUR TELEGRAM BOT CHAT_ID HERE>
+  discord: ## DELETE IF NOT USED
+    url: <PASTE YOUR DISCORD WEBHOOK HERE>
+  slack: ## DELETE IF NOT USED
+    url: <PASTE YOUR SLACK WEBHOOK HERE>

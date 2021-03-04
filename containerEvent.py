@@ -26,7 +26,11 @@ def getEvent(ev):
     except KeyError:
         pass
 
-    event.name = util.safeCast(ev["Actor"]["Attributes"]["name"], str)
+    try:
+        event.name = util.safeCast(ev["Actor"]["Attributes"]["name"], str)
+    except KeyError:
+        print("Warn: Event doesn't have name!")
+        pass
 
     if event.type == "container":
         return event
